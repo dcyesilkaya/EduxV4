@@ -1,0 +1,68 @@
+﻿@model EduxV4.Data.County
+
+@{
+    ViewData["Title"] = "İlçe Düzenle";
+}
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" asp-for-id="Id">
+            @if (ViewBag.Saved == true)
+            {
+                <div class="alert alert-success">
+                    Kaydetme işlemi başarıyla gerçekleşti. <a asp-action="Index">Listeye Geri Dön</a>.
+                </div>
+
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_6_1" data-toggle="tab"> Genel </a>
+                </li>
+            </ul>
+            <style>
+                .tab-content {
+                    border-right: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    border-left: 1px solid #ddd;
+                    padding: 10px;
+                    border-radius: 0px 0px 4px 4px;
+                    margin-bottom: 10px;
+                }
+
+                .nav-tabs {
+                    margin-bottom: 0px;
+                }
+            </style>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_6_1">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CityId" class="control-label"></label>
+                        <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"><option value="">Şehir Seçiniz</option></select>
+                        <span asp-validation-for="CityId" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="CreateDate" />
+
+                    <input type="hidden" asp-for="CreatedBy" />
+
+                    <input type="hidden" asp-for="UpdateDate" />
+
+                    <input type="hidden" asp-for="UpdatedBy" />
+
+                    <input type="hidden" asp-for="IPAddress" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-success" />     <a asp-action="Index" class="btn btn-danger">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

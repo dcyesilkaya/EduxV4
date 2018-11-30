@@ -1,0 +1,286 @@
+﻿@model EduxV4.Data.Contact
+@{
+    ViewData["Title"] = "Yeni Kişi";
+}
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Kaydet" class="btn btn-success" />  <a asp-action="Index" class="btn btn-danger">İptal</a>
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <style>
+                .tab-content {
+                    border-right: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    border-left: 1px solid #ddd;
+                    padding: 10px;
+                    border-radius: 0px 0px 4px 4px;
+                    margin-bottom:10px;
+                }
+
+                .nav-tabs {
+                    margin-bottom: 0px;
+                }
+            </style>
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab_6_1" data-toggle="tab"> Genel </a>
+                    </li>
+                    <li>
+                        <a href="#tab_6_2" style="cursor:no-drop;" onclick="alert('Bu sekmeye geçebilmek için önce kişiyi kaydetmelisiniz.');"> Görüşmeler </a>
+                    </li>
+                    <li>
+                        <a href="#tab_6_3" style="cursor:no-drop;" onclick="alert('Bu sekmeye geçebilmek için önce kişiyi kaydetmelisiniz.');"> Aile Bilgileri </a>
+                    </li>
+                    <li>
+                        <a href="#tab_6_6" style="cursor:no-drop;" onclick="alert('Bu sekmeye geçebilmek için önce kişiyi kaydetmelisiniz.');"> Referanslar </a>
+                    </li>
+                    <li>
+                        <a href="#tab_6_7" style="cursor:no-drop;" onclick="alert('Bu sekmeye geçebilmek için önce kişiyi kaydetmelisiniz.');"> Teklifler </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_6_1">
+                        <fieldset>
+                            <legend><span class="contactType"></span>Kimlik Bilgileri</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="FirstName" class="form-control" />
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="LastName" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="LastName" class="form-control" />
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Gender" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="Gender" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(EduxV4.Data.Gender))">
+                                                <option value="">Cinsiyet seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="Gender" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="IdentityNumber" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="IdentityNumber" class="form-control" />
+                                            <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="BirthDate" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="BirthDate" class="form-control" />
+                                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="BirthPlace" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="BirthPlace" class="form-control" />
+                                            <span asp-validation-for="BirthPlace" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend><span class="contactType"></span>İletişim Bilgileri</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="LandingPhone" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="LandingPhone" class="form-control" />
+                                            <span asp-validation-for="LandingPhone" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="MobilePhone" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="MobilePhone" class="form-control" />
+                                            <span asp-validation-for="MobilePhone" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Notes" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <textarea asp-for="Notes" class="form-control" rows="8"></textarea>
+                                            <span asp-validation-for="Notes" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label asp-for="CountryId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="CountryId" class="form-control" asp-items="@ViewBag.Countries">
+                                                <option value="">Ülke seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="CountryId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CityId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="CityId" class="form-control" asp-items="@ViewBag.Cities">
+                                                <option value="">Şehir seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="CityId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CountyId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="CountyId" class="form-control" asp-items="@ViewBag.Counties">
+                                                <option value="">İlçe seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="CountyId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ZipCode" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <input asp-for="ZipCode" class="form-control" />
+                                            <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Address" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <textarea asp-for="Address" class="form-control" rows="6"></textarea>
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                        <fieldset>
+                            <legend><span class="contactType"></span>Diğer Bilgiler</legend>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="ContactType" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="ContactType" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(EduxV4.Data.ContactType))"></select>
+                                            <span asp-validation-for="ContactType" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OccupationId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="OccupationId" class="form-control" asp-items="@ViewBag.Occupations"><option value="">Meslek seçiniz</option></select>
+                                            <span asp-validation-for="OccupationId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="ContactStage" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="ContactStage" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(EduxV4.Data.ContactStage))"></select>
+                                            <span asp-validation-for="ContactStage" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="FamilyRole" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="FamilyRole" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(EduxV4.Data.FamilyRole))">
+                                                <option value="">Ailedeki rolü seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="FamilyRole" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ParentId" class="col-md-2 control-label"></label>
+                                        <div class="col-md-10">
+                                            <select asp-for="ParentId" class="form-control" asp-items="@ViewBag.ParentId">
+                                                <option value="">Veli seçiniz</option>
+                                            </select>
+                                            <span asp-validation-for="ParentId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="tab-pane fade" id="tab_6_2">
+
+                    </div>
+                    <div class="tab-pane fade" id="tab_6_3">
+
+                    </div>
+                    <div class="tab-pane fade" id="tab_6_4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Kaydet" class="btn btn-success" />  <a asp-action="Index" class="btn btn-danger">İptal</a>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(function () {
+            // showHideControls();
+            changeTexts();
+            autoSetValues();
+            $("#ContactType").change(changeTexts);
+            // $("#ContactStage").change(showHideControls);
+            $("#Gender").change(autoSetValues);
+        });
+        function changeTexts() {
+            $(".contactType").text($("#ContactType option:selected").text() + " ");
+            $("h1.page-title").html($("h1.page-title").html().replace(/Kişi|Öğrenci|Ebeveyn|Personel|Eğitmen/, $("#ContactType option:selected").text()));
+        }
+        function showHideControls() {
+            if ($("#ContactType").val() == "1") {
+                $("#OccupationId").parents(".form-group").hide();
+                $("#FamilyRole").parents(".form-group").hide();
+            } else {
+                $("#OccupationId").parents(".form-group").show();
+                $("#FamilyRole").parents(".form-group").show();
+            }
+        }
+
+        function autoSetValues() {
+            if ($("#Gender").val() == "1") {
+                $("#FamilyRole").val("2");
+            } else if ($("#Gender").val() == "2") {
+                $("#FamilyRole").val("1");
+            }
+        }
+    </script>
+}
+

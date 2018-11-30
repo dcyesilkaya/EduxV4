@@ -1,0 +1,101 @@
+﻿@model EduxV4.Data.CourseContent
+
+@{
+    ViewData["Title"] = "Ders İçeriği Ekle";
+}
+<script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <style>
+                .tab-content {
+                    border-right: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    border-left: 1px solid #ddd;
+                    padding: 10px;
+                    border-radius: 0px 0px 4px 4px;
+                    margin-bottom: 10px;
+                }
+
+                .nav-tabs {
+                    margin-bottom: 0px;
+                }
+            </style>
+
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_6_1" data-toggle="tab"> Genel </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_6_1">
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <textarea asp-for="Content" class="form-control" rows="12"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#Content'))
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="File" class="control-label"></label>
+                        <input asp-for="File" type="hidden" />
+                        <input type="file" name="FileUpload" class="form-control" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Week" class="control-label"></label>
+                        <input asp-for="Week" class="form-control" />
+                        <span asp-validation-for="Week" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseId" class="control-label"></label>
+                        <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId">
+                            <option value="">Ders seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublishDate" class="control-label"></label>
+                        <input asp-for="PublishDate" class="form-control" />
+                        <span asp-validation-for="PublishDate" class="text-danger"></span>
+                    </div>
+                    <input asp-for="CreateDate" type="hidden" />
+
+
+                    <input asp-for="CreatedBy" type="hidden" />
+
+
+                    <input asp-for="UpdateDate" type="hidden" />
+
+
+                    <input asp-for="UpdatedBy" type="hidden" />
+
+
+                    <input asp-for="IPAddress" type="hidden" />
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <input type="submit" value="Kaydet" class="btn btn-success" />  <a asp-action="Index" class="btn btn-danger">İptal</a>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

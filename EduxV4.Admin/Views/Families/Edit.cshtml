@@ -1,0 +1,142 @@
+﻿@model EduxV4.Data.Family
+
+@{
+    ViewData["Title"] = "Aile Düzenle";
+    Layout = null;
+}
+<h4>Aile Düzenle</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <input type="hidden" name="ContactId" id="ContactId" value="@ViewBag.ContactId" />
+            <div class="form-horizantal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Name" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Id" type="hidden" />
+                    <input asp-for="Name" class="form-control" />
+
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" onclick="FamilySave()">Kaydet</button>
+                    </span>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="CreateDate" type="hidden" />
+
+                <input asp-for="CreatedBy" type="hidden" />
+
+                <input asp-for="UpdateDate" type="hidden" />
+
+                <input asp-for="UpdatedBy" type="hidden" />
+
+                <input asp-for="IPAddress" type="hidden" />
+            </div>
+            <h4>Aile Üyeleri</h4>
+
+            <p>
+                <a href="javascript:void(0);" class="btn btn-sm btn-primary" data-href="@Url.Action("Select","Contacts")" onclick="OpenContactModal(this)">Listeden Kişi Ekle</a>
+            </p>
+            <script>
+                function OpenContactModal(elm, mode) {
+                    $("#contactModal .modal-body").load($(elm).attr("data-href"));
+                    $("#contactModal").modal("show");
+                }
+            </script>
+            <style>
+                #activityModal .form-group {
+                    padding: 3px;
+                }
+            </style>
+            <!-- Modal -->
+            <div class="modal fade" id="contactModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Kişi Seç</h4>
+                        </div>
+                        <div class="modal-body">
+                            Yükleniyor...
+                        </div>
+                        <div class="modal-footer">
+                            <input id="selectButton" type="button" value="Seç" class="btn btn-success" onclick="ContactSelect()" /><button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-striped table-hover dt-responsive members-with-ajax-load" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-nowrap all">
+                            Tam Ad
+                        </th>
+
+                        <th>
+                            TC Kimlik No
+                        </th>
+                        <th>
+                            Doğum Tarihi
+                        </th>
+                        <th>
+                            Cep Telefonu
+                        </th>
+                        <th data-orderable="false" class="all">Eylemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Members)
+                    {
+                        <tr>
+                            <td>
+                                @item.FullName
+                            </td>
+
+                            <td>
+                                @item.IdentityNumber
+                            </td>
+                            <td>
+                                @item.BirthDate
+                            </td>
+                            <td>
+                                @item.MobilePhone
+                            </td>
+                            <td>
+                                <div class="btn-group pull-right">
+                                    <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">
+                                        Eylemler
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li>
+                                            <a href="javascript:void(0);" data-href="@Url.Action("Edit","Contacts", new { id=item.Id})" onclick="OpenContactModal(this,'edit')"><i class="fa fa-edit"></i> Kişi Düzenle</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" data-href="@Url.Action("RemoveMember","Families", new { id=item.Id})" onclick="OpenContactModal(this, 'delete')"><i class="fa fa-trash"></i> Üyelerden Kaldır</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <script>
+                $(document).ready(function () {
+                    $('.members-with-ajax-load').DataTable({
+                        "responsive": true,
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"
+                        }
+                    });
+                });
+
+
+            </script>
+        </form>
+
+    </div>
+</div>

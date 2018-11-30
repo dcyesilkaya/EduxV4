@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Tanımlamalar";
+}
+<div class="row">
+    <div class="col-md-12">
+        <style>
+            .tab-content {
+                border-right: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                border-left: 1px solid #ddd;
+                padding: 10px;
+                border-radius: 0px 0px 4px 4px;
+                margin-bottom: 10px;
+            }
+
+            .nav-tabs {
+                margin-bottom: 0px;
+            }
+        </style>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#tab_6_1" data-toggle="tab"> Genel </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_6_1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend>Görüşme Tanımlamaları</legend>
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="ActivityNextSteps">Görüşme Sonraki Adımlar</a></li>
+                                <li><a asp-action="Index" asp-controller="ActivityTypes">Görüşme Türleri</a></li>
+                                <li><a asp-action="Index" asp-controller="ActivitySources">Görüşme Kaynakları</a></li>
+                                <li><a asp-action="Index" asp-controller="ActivityStatuses">Görüşme Durumları</a></li>
+                                <li><a asp-action="Index" asp-controller="Positivenesses">Olumluluklar</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend>Adres Tanımlamaları</legend>
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="Countries">Ülkeler</a></li>
+                                <li><a asp-action="Index" asp-controller="Cities">Şehirler</a></li>
+                                <li><a asp-action="Index" asp-controller="Counties">İlçeler</a></li>
+                                <li><a asp-action="Index" asp-controller="Districts">Mahalleler</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend>Okul Tanımlamaları</legend>
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="Campuses">Kampüsler</a></li>
+                                <li><a asp-action="Index" asp-controller="SchoolLevels">Okul Seviyeleri</a></li>
+                                <li><a asp-action="Index" asp-controller="Rooms">Odalar</a></li>
+                                <li><a asp-action="Index" asp-controller="Schools">Okullar</a></li>
+                                <li><a asp-action="Index" asp-controller="ClassLevels">Sınıf Seviyeleri</a></li>
+                                <li><a asp-action="Index" asp-controller="Seasons">Sezonlar</a></li>
+                                <li><a asp-action="Index" asp-controller="Branches">Şubeler</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-3">
+                        <fieldset>
+                            <legend>Diğer Tanımlamalar</legend>
+                            <ul>
+                                <li><a asp-action="Index" asp-controller="Occupations">Meslekler</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

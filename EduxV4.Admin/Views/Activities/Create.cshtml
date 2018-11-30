@@ -1,0 +1,94 @@
+﻿@model EduxV4.Data.Activity
+@{
+    ViewData["Title"] = "Yeni Görüşme";
+    Layout = null;
+}
+<div class="container-fluid">
+    <form id="activityCreateForm">
+        <div class="form-horizontal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="StaffId" class="control-label"></label>
+                        <select asp-for="StaffId" class="form-control" asp-items="ViewBag.StaffId"><option value="">Personel seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactId" class="control-label"></label>
+                        <select asp-for="ContactId" class="form-control" asp-items="ViewBag.ContactId"><option value="">Ebeveyn seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActivityDate" class="control-label"></label>
+                        <input asp-for="ActivityDate" class="form-control" />
+                        <span asp-validation-for="ActivityDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OldSchool" class="control-label"></label>
+                        <input asp-for="OldSchool" class="form-control" />
+                        <span asp-validation-for="OldSchool" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SchoolLevelId" class="control-label"></label>
+                        <select asp-for="SchoolLevelId" class="form-control" asp-items="ViewBag.SchoolLevelId"><option value="">Okul türü seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CampusId" class="control-label"></label>
+                        <select asp-for="CampusId" class="form-control" asp-items="ViewBag.CampusId"><option value="">Kampüs seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClassLevelId" class="control-label"></label>
+                        <select asp-for="ClassLevelId" class="form-control" asp-items="ViewBag.ClassLevelId"><option value="">Sınıf seviyesi seçiniz</option></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ForContactId" class="control-label"></label>
+                        <select asp-for="ForContactId" class="form-control" asp-items="ViewBag.ForContactId"><option value="">Öğrenci seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActivityTypeId" class="control-label"></label>
+                        <select asp-for="ActivityTypeId" class="form-control" asp-items="ViewBag.ActivityTypeId"><option value="">Görüşme tipi seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActivitySourceId" class="control-label"></label>
+                        <select asp-for="ActivitySourceId" class="form-control" asp-items="ViewBag.ActivitySourceId"><option value="">Kaynak seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActivityStatusId" class="control-label"></label>
+                        <select asp-for="ActivityStatusId" class="form-control" asp-items="ViewBag.ActivityStatusId"><option value="">Durum seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PositivenessId" class="control-label"></label>
+                        <select asp-for="PositivenessId" class="form-control" asp-items="ViewBag.PositivenessId"><option value="">Olumluluk seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActivityNextStepId" class="control-label"></label>
+                        <select asp-for="ActivityNextStepId" class="form-control" asp-items="ViewBag.ActivityNextStepId"><option value="">Sonraki adımı seçiniz</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AppointmentDate" class="control-label"></label>
+                        <input asp-for="AppointmentDate" class="form-control" />
+                        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Notes" class="control-label"></label>
+                        <textarea asp-for="Notes" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <input asp-for="CreateDate" type="hidden" />
+            <input asp-for="CreatedBy" type="hidden" />
+            <input asp-for="UpdateDate" type="hidden" />
+            <input asp-for="UpdatedBy" type="hidden" />
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

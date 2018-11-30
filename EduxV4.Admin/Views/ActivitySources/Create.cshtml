@@ -1,0 +1,79 @@
+﻿@model EduxV4.Data.ActivitySource
+
+@{
+    ViewData["Title"] = "Yeni Görüşme Kaynağı";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+
+        <style>
+            .tab-content {
+                border-right: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                border-left: 1px solid #ddd;
+                padding: 10px;
+                border-radius: 0px 0px 4px 4px;
+                margin-bottom: 10px;
+            }
+
+            .nav-tabs {
+                margin-bottom: 0px;
+            }
+        </style>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_6_1" data-toggle="tab"> Genel </a>
+                </li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_6_1">
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ParentActivitySourceId" class="control-label"></label>
+                        <select asp-for="ParentActivitySourceId" class="form-control" asp-items="ViewBag.ParentActivitySourceId"><option value="">Üst görüşme kaynağı seçiniz</option></select>
+                    </div>
+
+
+                    <input asp-for="CreateDate" type="hidden" />
+
+
+
+                    <input asp-for="CreatedBy" type="hidden" />
+
+
+
+                    <input asp-for="UpdateDate" type="hidden" />
+
+
+
+                    <input asp-for="UpdatedBy" type="hidden" />
+
+
+
+                    <input asp-for="IPAddress" type="hidden" />
+
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-danger">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

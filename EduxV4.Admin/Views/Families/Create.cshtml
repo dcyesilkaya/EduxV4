@@ -1,0 +1,38 @@
+﻿@model EduxV4.Data.Family
+
+@{
+    ViewData["Title"] = "Yeni Aile";
+    Layout = null;
+}
+<h4>Yeni Aile</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <input type="hidden" name="ContactId" id="ContactId" value="@ViewBag.ContactId" />
+            <div class="form-horizantal">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Name" class="control-label"></label>
+                <div class="input-group">
+
+                    <input asp-for="Name" class="form-control" />
+
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" onclick="FamilySave()">Kaydet</button>
+                    </span>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="CreateDate" type="hidden" />
+
+                <input asp-for="CreatedBy" type="hidden" />
+
+                <input asp-for="UpdateDate" type="hidden" />
+
+                <input asp-for="UpdatedBy" type="hidden" />
+
+                <input asp-for="IPAddress" type="hidden" />
+            </div>
+        </form>
+
+    </div>
+</div>
